@@ -1,4 +1,29 @@
 from urllib.request import urlopen
+from bs4 import BeautifulSoup
 
-html = urlopen('http://pythonscraping.com/pages/page1.html')
-print(html.read())
+from urllib.error import HTTPError #to handle errors with HTML page
+from urllib.error import URLError #to handle error when there is no connection to the server
+
+
+#html = urlopen('http://www.pythonscraping.com/pages/page1.html')
+#html = urlopen('https://nofluffjobs.com/pl/job/senior-azure-devops-engineer-xebia-remote')
+
+html = urlopen('https://nofluffjobs.com/pl')
+
+
+bs = BeautifulSoup(html.read(), 'html.parser')
+
+object = 'head'
+
+#print(bs.h1) #prints only H1
+print(bs)
+
+
+try:
+ html = urlopen('https://pythonscrapingthisurldoesnotexist.com')
+except HTTPError as e:
+ print(e)
+except URLError as e:
+ print('The server could not be found!')
+else:
+ print('It Worked!')
