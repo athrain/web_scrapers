@@ -8,12 +8,15 @@ from urllib.error import URLError #to handle error when there is no connection t
 #html = urlopen('http://www.pythonscraping.com/pages/page1.html')
 #html = urlopen('https://nofluffjobs.com/pl/job/senior-azure-devops-engineer-xebia-remote')
 
-html = urlopen('https://nofluffjobs.com/pl/Java?page=1')
+html = urlopen('https://nofluffjobs.com/pl/job/mid-senior-backend-engineer-codete-remote')
 
 
 bs = BeautifulSoup(html.read(), 'html.parser')
 
-object = 'head'
+#save it to txt file
+with open(r"C:\Users\dawid\OneDrive\Pulpit\Empty.txt", mode="wt", encoding="utf-8") as f:
+    f.write(str(bs))
+    #f.write("And some more text")
 
 #print(bs.h1) #prints only H1
 print(bs)
